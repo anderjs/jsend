@@ -80,10 +80,24 @@ export type { BadgeProps } from "./components/Badge";
 export { Badge } from "./components/Badge";
 export { BadgeStatus } from "./components/Badge/types";
 
-export { Navbar } from "./components/Navbar";
 export { Footer } from "./components/Footer";
 export { Layout } from "./components/Layout";
+export { Navbar } from "./components/Navbar";
 export { Sidebar } from "./components/Sidebar";
+
+export {
+  TwTable as Table,
+  TableRow,
+  TableData,
+  TableWrapper,
+} from "./components/Table";
+export type {
+  TableProps,
+  TableRowProps,
+  TableColProps,
+  TableDataProps,
+  TableStatusProps,
+} from "./components/Table/types";
 
 export type { NavbarProps } from "./components/Navbar";
 export type { SidebarProps } from "./components/Sidebar/types";
@@ -184,5 +198,27 @@ export type {
   CommonSignalConnection as CommonSignal,
 } from "./providers/microfront/types";
 
-export { Logger } from "./providers/logger";
+export { Color } from "./theme";
+export { Logger, LogColors, LogLevel } from "./providers/logger";
 
+export { GrantSystem, Private } from "./providers/private";
+export type { GrantArgs, PrivateProps } from "./providers/private";
+
+// - Hooks
+export { useCache } from "./hooks/usecache";
+export { useToggle } from "./hooks/usetoggle";
+export { useCheckbox } from "./hooks/usecheckbox";
+export { defaultConfig } from "./hooks/usecache/config";
+export { defaultCacheQueryOptions } from "./utils/cache";
+
+// - Utils
+
+export { sort } from "./utils/sort";
+export { stack } from "./utils/stack";
+export { bearer } from "./utils/bearer";
+export { revert } from "./utils/revert";
+export { mapping } from "./utils/mapping";
+export { download } from "./utils/download";
+export { capitalize } from "./utils/capitalize";
+export { formatHourTime, removeHourFormat } from "./utils/time";
+export { createTimeSlots, createHalfTimeSlots } from "./utils/slots";

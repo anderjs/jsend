@@ -1,8 +1,8 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from "react";
 import { v4 } from "uuid";
 import classNames from "clsx";
 import { format } from "rut.js";
-import styled, { css } from "styled-components";
 
 import { Builder } from "./builder";
 import { classes } from "./styles";
@@ -11,29 +11,51 @@ import { Button } from "@nectiasw/components/Button";
 import { Tooltip } from "@nectiasw/components/Tooltip";
 import { Checkbox } from "@nectiasw/components/Checkbox";
 import { RadioButton } from "@nectiasw/components/RadioButton";
-import { ButtonProps } from "@nectiasw/components/Button";
 
-
-
+import {
+  Heading,
+  TableProps,
+  TableRowProps,
+  TableDataProps,
+  TableStatusProps,
+} from "./types";
 
 import {
   Col,
+  Table,
   StatusColor,
+  StyledThead,
   StyledTableData,
   StyledTableHead,
   StyledTableRow,
-  StyledThead,
-  Table,
   HeaderContainer,
-} from "./tw-table.styled.tailwind";
-import { SortIcon } from "./svg";
+} from "./styled";
+
+
+const SortIcon: React.FC = () => (
+  <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={1.5}
+      stroke="currentColor"
+      className="w-4 h-4 relative top-[1px] hover:cursor-pointer hover:text-darkened"
+      attributeName="transform"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+      />
+    </svg>
+);
 
 /**
  * @description
  * This file contains the Table component for the Tailwind CSS framework.
  * @param props The properties of the Table component.
  */
-export const Table: React.FunctionComponent<TableProps> = React.memo(
+export const TwTable: React.FunctionComponent<TableProps> = React.memo(
   (props) => {
     const {
       index,
@@ -96,11 +118,15 @@ export const Table: React.FunctionComponent<TableProps> = React.memo(
       index: number
     ): React.ReactNode => {
       const title = typeof header === "string" ? header : header.title;
+
       const objectRef = typeof header === "string" ? null : header;
+
+      const isAsc = objectRef?.sort === "ASC";
+
+      const isCurrentSorting = title === sortingHeader;
+
       const isOrdering =
         objectRef?.sort === "ASC" || objectRef?.sort === "DESC";
-      const isAsc = objectRef?.sort === "ASC";
-      const isCurrentSorting = title === sortingHeader;
 
       if (objectRef?.tooltip) {
         return (
@@ -132,7 +158,21 @@ export const Table: React.FunctionComponent<TableProps> = React.memo(
                     )}
                     onClick={() => handleSort(objectRef.title, index)}
                   >
-                    <SortIcon />
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="w-4 h-4 relative top-[1px] hover:cursor-pointer hover:text-darkened"
+                      attributeName="transform"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                      />
+                    </svg>
                   </span>
                 )}
               </div>{" "}
@@ -168,7 +208,6 @@ export const Table: React.FunctionComponent<TableProps> = React.memo(
           className={classNames(index === 0 && hasCheckbox && "w-full")}
           sortable={objectRef?.sortabled}
         >
-          {" "}
           <div
             className={classNames(
               objectRef?.sortabled &&
@@ -272,8 +311,6 @@ export const Table: React.FunctionComponent<TableProps> = React.memo(
 
               const isOrdering =
                 objectRef?.sort === "ASC" || objectRef?.sort === "DESC";
-
-              const isAsc = objectRef?.sort === "ASC";
 
               return (
                 <StyledTableHead
@@ -504,295 +541,19 @@ Status.defaultProps = {
 export const TableRow: React.FunctionComponent<TableRowProps> = ({
   align,
   children,
+  disabled = false,
 }) => {
-  return <StyledTableRow align={align}>{children}</StyledTableRow>;
+  return (
+    <StyledTableRow align={align} disabled={disabled}>
+      {children}
+    </StyledTableRow>
+  );
 };
 
 /**
  * @description
  * This file contains the TableWrapper component for the Tailwind CSS framework.
  */
-export const TableWrapper: React.FunctionComponent = ({ children }) => {
+export const TableWrapper: React.FunctionComponent<{ children: React.ReactNode}> = ({ children }) => {
   return <div className={classes.row.container}>{children}</div>;
-};
-
-
-
-type PartialHeading = Partial<
-  Heading & {
-    index?: number;
-    fixedHeader?: boolean;
-  }
->;
-
-type StyledTheadProps = {
-  fixedHeader?: boolean;
-  theadColor?: string;
-  index?: number;
-};
-
-type PartialTableProps = Partial<TableProps>;
-
-type PartialTableDataProps = Partial<
-  TableDataProps & {
-    index?: number;
-    isFixed?: boolean;
-    right?: string;
-  }
->;
-
-type PartialTableRowProps = Partial<TableRowProps>;
-
-type PartialTableColProps = Partial<TableColProps>;
-
-export const Table = styled.table<PartialTableProps>`
-  table-layout: fixed;
-  border-collapse: separate;
-  border-spacing: 0 16px;
-  margin-top: -16px;
-  margin-bottom: -16px;
-`;
-
-export const StyledThead = styled.thead<StyledTheadProps>`
-  background-color: transparent;
-
-  ${({ fixedHeader, index }) =>
-    fixedHeader &&
-    css`
-      th {
-        position: sticky;
-        top: 0;
-        background-color: white;
-        color: black;
-        ${index != null && `z-index: ${index};`}
-      }
-    `}
-`;
-
-export const StyledTableHead = styled.th<PartialHeading>`
-  color: ${({ color }) => color};
-  text-align: ${({ align }) => align};
-  padding: 6px 16px;
-  position: relative;
-
-  &:hover {
-    color: #464646;
-
-    svg[attributeName="transform"] {
-      color: #464646;
-    }
-  }
-
-  &:first-child {
-    padding-left: 24px;
-  }
-
-  &:last-child {
-    padding-right: 8px;
-  }
-
-  &:not(:last-child):after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    right: 0;
-    height: 40%;
-    width: 1px;
-    background-color: #e0dfdf;
-    transform: translateY(-50%);
-  }
-`;
-
-export const StyledTableRow = styled.tr<PartialTableRowProps>((props) => ({}));
-
-export const StyledTableData = styled.td<PartialTableDataProps>`
-  ${({ color }) =>
-    color &&
-    css`
-      color: ${color};
-    `}
-
-  ${({ align }) =>
-    align &&
-    css`
-      text-align: ${align};
-    `}
-
-  ${({ overflow, innerText }) =>
-    overflow &&
-    innerText &&
-    css`
-      max-width: 100px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    `}
-
-  padding: 8px 16px;
-
-  &:first-child {
-    padding-left: 24px;
-    padding-right: 16px;
-  }
-
-  &:last-child {
-    padding-right: 8px;
-  }
-
-  &:not(:last-child):after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    right: 0;
-    height: 40%;
-    width: 1px;
-    background-color: #e0dfdf;
-    transform: translateY(-50%);
-  }
-
-  ${({ isFixed, right }) =>
-    isFixed &&
-    css`
-      position: sticky;
-      right: ${right};
-      background-color: white;
-
-      &:after {
-        display: none;
-      }
-    `}
-
-  ${({ overflowWrap }) =>
-    overflowWrap &&
-    css`
-      overflow-wrap: break-word;
-    `}
-`;
-
-export const Col = styled.col<PartialTableColProps>((props) => ({
-  width: `${props.width}${props.unit};`,
-}));
-
-/**
- * @description
- * StatusColor is a styled component that renders a div with a background color.
- */
-export const StatusColor = styled.div<{ color?: string }>`
-  display: block;
-  width: 1.25rem;
-  height: 1.25rem;
-  color: ${({ color }) => color};
-  background-color: ${({ color }) => color};
-`;
-
-export const HeaderContainer = styled.div<{
-  sortable?: boolean | undefined;
-}>`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  &.grow {
-    flex-grow: 1;
-  }
-
-  ${({ sortable }) =>
-    sortable &&
-    css`
-      cursor: pointer;
-    `}
-`;
-
-
-export type Heading<T = {}> = {
-  title: string;
-  tooltip?: string;
-  width?: string;
-  align?: "left" | "center" | "right";
-  className?: string;
-  color?: string;
-  size?: "xs" | "sm" | "md" | "lg" | "xl";
-  sort?: "ASC" | "DESC" | "DEFAULT";
-  sortabled?: boolean;
-  clear?: boolean;
-  alias?: keyof T;
-};
-
-/**
- * @description
- * This file contains the types for the Table component.
- */
-export type TableProps = {
-  auto?: boolean;
-  onSort?: (field: string, index?: number) => void;
-  onReset?: () => void;
-  fixedHeader?: boolean;
-  index?: number;
-  headers: string[] | Heading[];
-  widths?: number[];
-  children: React.ReactNode;
-  cellSpacing?: number;
-  cellPadding?: number;
-  className?: string;
-  filter?: string;
-  unit?: "%" | "px" | "rem";
-  checked?: boolean;
-  hasCheckbox?: boolean;
-  onChangeCheckbox?: (checked: boolean) => void;
-  headerClassName?: string;
-};
-
-export type TableDataProps = {
-  last?: boolean;
-  asError?: boolean;
-  first?: boolean;
-  overflow?: boolean;
-  innerText?: string;
-  className?: string;
-  formatAsCLP?: boolean;
-  formatAsRut?: boolean;
-  formatAsDate?: boolean;
-  overflowWrap?: boolean;
-  formatAsNumber?: boolean;
-  formatAsStatus?: boolean;
-  formatAsPercentage?: boolean;
-  formatAsDigits?: boolean;
-  children?: React.ReactNode;
-  color?: string;
-  dataId?: number;
-  checked?: boolean;
-  hasCheckbox?: boolean;
-  icons?: React.ReactNode[];
-  align?: "left" | "center" | "right";
-  iconJustify?: "center" | "start" | "end" | "between" | "around";
-  onClickDetail?: () => void;
-  onChangeCheckbox?: (checked: boolean, dataId?: number) => void;
-  detailText?: string;
-  detailDisabled?: boolean;
-  detailVariant?: ButtonProps["variant"];
-  indexed?: boolean;
-  hasRadioButton?: boolean;
-  onChangeRadioButton?: (value: string | undefined) => void;
-  isFixed?: boolean;
-  right?: string;
-};
-
-export type TableRowProps = {
-  children: React.ReactNode;
-  align?: "left" | "center" | "right";
-};
-
-export type TableStatusProps = {
-  id?: number;
-  color?: string;
-  onClick?: () => void;
-  text?: TableDataProps["detailText"];
-  disabled?: TableDataProps["detailDisabled"];
-  variant?: ButtonProps["variant"];
-  value: "Normal" | "Cerrado" | "Crítico" | "Por emisión OC";
-};
-
-export type TableColProps = {
-  width?: number;
-  unit?: "%" | "px" | "rem";
 };
