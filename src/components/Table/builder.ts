@@ -1,4 +1,4 @@
-import { TableProps, Heading } from "./index";
+import { TableProps, Heading } from "./types";
 
 export type Override<T, U> = Omit<T, keyof U> & U;
 
@@ -17,9 +17,9 @@ class Builder {
     xl: "text-xl",
   };
 
-  public tailwind: string;
+  public tailwind: string = "";
 
-  public headings: string[];
+  public headings: string[] = [];
 
   constructor(props: Partial<TableProps>) {
     this.headings = this.buildStyle(props.headers ?? []);

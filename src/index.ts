@@ -146,7 +146,7 @@ export type { SignalProps, RefUser, ContextProps } from "./context";
 
 // - Providers
 export { HttpClient } from "./providers/https";
-export { signalHttps } from "./providers/https/http.api";
+export { signalHttps, Method } from "./providers/https/http.api";
 export type { Arguments } from "./providers/https/http.api";
 export type { HttpClientOptions, HttpResponse } from "./providers/https";
 

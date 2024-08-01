@@ -2,10 +2,7 @@ import React from "react";
 import classNames from "clsx";
 import {
   Menu,
-  MenuItem,
-  MenuItems,
   Transition,
-  MenuButton,
 } from "@headlessui/react";
 import {
   ChevronUpIcon,
@@ -135,7 +132,7 @@ export const Dropdown: React.FunctionComponent<DropdownProps> = React.memo(
       return (
         <Menu as="div" className={styles?.root ?? classes.container.root}>
           <div className={classes.container.circle}>
-            <MenuButton
+            <Menu.Button
               disabled={disabled}
               about={styles?.title ? "no-controls" : "controls"}
               className={classNames(
@@ -143,16 +140,16 @@ export const Dropdown: React.FunctionComponent<DropdownProps> = React.memo(
               )}
             >
               {icon}
-            </MenuButton>
+            </Menu.Button>
           </div>
           <Transition {...transition}>
-            <MenuItems className={refStyles}>
+            <Menu.Items className={refStyles}>
               <div className={classes.options.padding}>
                 {options.map((option: string | Option) => {
                   const { label, value } = formatOption(option);
 
                   return (
-                    <MenuItem
+                    <Menu.Item
                       key={value}
                       disabled={disabled}
                       as={React.Fragment}
@@ -169,11 +166,11 @@ export const Dropdown: React.FunctionComponent<DropdownProps> = React.memo(
                           {label}
                         </div>
                       )}
-                    </MenuItem>
+                    </Menu.Item>
                   );
                 })}
               </div>
-            </MenuItems>
+            </Menu.Items>
           </Transition>
         </Menu>
       );
@@ -182,23 +179,23 @@ export const Dropdown: React.FunctionComponent<DropdownProps> = React.memo(
     return (
       <Menu as="div" className={styles?.root ?? classes.container.root}>
         <div className={classes.container.button}>
-          <MenuButton
+          <Menu.Button
             disabled={disabled}
             about={styles?.title ? "no-controls" : "controls"}
             className={classNames(styles?.title ?? classes.container.title)}
           >
             {uncontrollable ? selectedValue : selected}
             {JSXOrientation}
-          </MenuButton>
+          </Menu.Button>
         </div>
         <Transition {...transition} as={React.Fragment}>
-          <MenuItems className={refStyles}>
+          <Menu.Items className={refStyles}>
             <div className={classes.options.padding}>
               {options.map((option: string | Option) => {
                 const { label, value } = formatOption(option);
 
                 return (
-                  <MenuItem disabled={disabled} key={value}>
+                  <Menu.Item disabled={disabled} key={value}>
                     {({ active }) => (
                       <div
                         className={classNames(
@@ -211,11 +208,11 @@ export const Dropdown: React.FunctionComponent<DropdownProps> = React.memo(
                         {label}
                       </div>
                     )}
-                  </MenuItem>
+                  </Menu.Item>
                 );
               })}
             </div>
-          </MenuItems>
+          </Menu.Items>
         </Transition>
       </Menu>
     );

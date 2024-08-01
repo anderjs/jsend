@@ -1,7 +1,7 @@
 import React from "react";
 import classNames from "clsx";
 import styled from "styled-components";
-import { Disclosure, DisclosureButton, DisclosurePanel, Transition } from "@headlessui/react";
+import { Disclosure, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 
 import { classes } from "./styles";
@@ -13,7 +13,7 @@ export const Collapse: React.FunctionComponent<CollapseProps> = React.memo(
         <Disclosure className={override} as="div">
           {({ open }) => (
             <>
-              <DisclosureButton className={classes.container.button}>
+              <Disclosure.Button className={classes.container.button}>
                 <div>
                   <span
                     className={classNames(classes.container.child, className)}
@@ -34,14 +34,14 @@ export const Collapse: React.FunctionComponent<CollapseProps> = React.memo(
                     )}
                   />
                 </div>
-              </DisclosureButton>
+              </Disclosure.Button>
               <Transition show={open} {...transition}>
-                <DisclosurePanel
+                <Disclosure.Panel
                   as="div"
                   className={classes.container.content}
                 >
                   {children}
-                </DisclosurePanel>
+                </Disclosure.Panel>
               </Transition>
             </>
           )}
@@ -55,7 +55,7 @@ export const Collapse: React.FunctionComponent<CollapseProps> = React.memo(
           <Disclosure as="div" className={classes.container.disclosure}>
             {({ open }) => (
               <>
-                <DisclosureButton className={classes.container.button}>
+                <Disclosure.Button className={classes.container.button}>
                   <div>
                     <span
                       className={classNames(classes.container.text, className)}
@@ -76,14 +76,14 @@ export const Collapse: React.FunctionComponent<CollapseProps> = React.memo(
                       )}
                     />
                   </div>
-                </DisclosureButton>
+                </Disclosure.Button>
                 <Transition show={open} {...transition}>
-                  <DisclosurePanel
+                  <Disclosure.Panel
                     as="div"
                     className={classes.container.content}
                   >
                     {children}
-                  </DisclosurePanel>
+                  </Disclosure.Panel>
                 </Transition>
               </>
             )}
@@ -97,7 +97,7 @@ export const Collapse: React.FunctionComponent<CollapseProps> = React.memo(
         <Disclosure as="div" className={classes.container.disclosure}>
           {({ open }) => (
             <>
-              <DisclosureButton className={classes.container.button}>
+              <Disclosure.Button className={classes.container.button}>
                 <div>
                   <span className={classes.container.text}>
                     {title && title}
@@ -116,14 +116,14 @@ export const Collapse: React.FunctionComponent<CollapseProps> = React.memo(
                     )}
                   />
                 </div>
-              </DisclosureButton>
+              </Disclosure.Button>
               <Transition show={open} {...transition}>
-                <DisclosurePanel
+                <Disclosure.Panel
                   as="div"
                   className={classes.container.content}
                 >
                   {children}
-                </DisclosurePanel>
+                </Disclosure.Panel>
               </Transition>
             </>
           )}

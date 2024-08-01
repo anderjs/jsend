@@ -1,4 +1,4 @@
-import { Heading } from "@nectia-software/components.ui.tw-table";
+import type { Heading } from "@nectiasw/components/Table/types";
 
 /**
  * @description
