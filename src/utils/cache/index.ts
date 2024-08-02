@@ -3,5 +3,5 @@ export const defaultCacheQueryOptions = {
     cacheTime: Infinity,
     refetchOnMount: false,
     refetchOnWindowFocus: false,
-    queryFn: (cache) => cache
+    queryFn: <T extends object>(cache: T) => cache
   };

@@ -11,6 +11,12 @@ export interface HttpResponse<T> extends Promise<T> {
   message: string;
 }
 
+export interface SignalResponse<T = Record<string, never>> {
+  data: T;
+  status: number;
+  message: string;
+}
+
 export interface HttpClientOptions {
   baseURL?: string;
   timeout?: number;

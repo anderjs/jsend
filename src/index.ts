@@ -1,3 +1,5 @@
+import './index.css';
+
 export { Box } from "./components/Box";
 export type { BoxProps } from "./components/Box";
 
@@ -38,6 +40,7 @@ export {
   Success,
   Subtitle,
   Description,
+  Item as Little,
 } from "./components/Text";
 export type { CommonTextProps } from "./components/Text";
 
@@ -92,6 +95,7 @@ export {
   TableWrapper,
 } from "./components/Table";
 export type {
+  Heading,
   TableProps,
   TableRowProps,
   TableColProps,
@@ -145,7 +149,7 @@ export { SignalContext } from "./context";
 export type { SignalProps, RefUser, ContextProps } from "./context";
 
 // - Providers
-export { HttpClient } from "./providers/https";
+export { HttpClient, type SignalResponse } from "./providers/https";
 export { signalHttps, Method } from "./providers/https/http.api";
 export type { Arguments } from "./providers/https/http.api";
 export type { HttpClientOptions, HttpResponse } from "./providers/https";
@@ -218,7 +222,17 @@ export { stack } from "./utils/stack";
 export { bearer } from "./utils/bearer";
 export { revert } from "./utils/revert";
 export { mapping } from "./utils/mapping";
+export { isAmount } from "./utils/amount";
 export { download } from "./utils/download";
 export { capitalize } from "./utils/capitalize";
 export { formatHourTime, removeHourFormat } from "./utils/time";
 export { createTimeSlots, createHalfTimeSlots } from "./utils/slots";
+
+export * as Detail from "./components/Detail";
+export type { DetailProps, SectionProps } from "./components/Detail";
+
+export { Timeline } from "./components/Timeline";
+export type { TimelineProps, TimelineDashedProps } from "./components/Timeline/types";
+
+export { Dragarea } from "./components/Dragarea";
+export type { DragareaProps } from "./components/Dragarea/types";

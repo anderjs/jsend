@@ -1,10 +1,10 @@
 import { map } from "lodash";
 
-type Mapping = {
-  idAsKey: string;
-  labelAsKey: string;
-  valueAsKey: string;
-  valueAsHref?: string;
+type Mapping<T> = {
+  idAsKey: keyof T;
+  labelAsKey: keyof T;
+  valueAsKey: keyof T;
+  valueAsHref?: keyof T;
 };
 
 type Option = {
@@ -20,7 +20,7 @@ type Option = {
  * @param data - data to be mapped.
  * @param args - mapping arguments.
  */
-export function mapping<T>(data: T[], args: Mapping) {
+export function mapping<T>(data: T[], args: Mapping<T>) {
   return map(data, (value: T) => {
     return {
       to: args.valueAsHref ? value[args.valueAsHref] : null,

@@ -1,7 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
 import classNames from "clsx";
 import { StageSpinner } from "react-spinners-kit";
-import { Color } from "@nectiasw/theme";
 import './index.css';
 
 export type LoadingProps = {
@@ -19,7 +19,7 @@ export const Loading: React.FunctionComponent<LoadingProps> = ({ status }) => {
     <div className="loading">
       <div className="spinner center">
         <br />
-        <StageSpinner loading={status} color={Color.secondary} size={80} />
+        <StageSpinner loading={status} color="##65BFB1" size={80} />
       </div>
     </div>
   ) : null;
@@ -30,7 +30,7 @@ export const Loading: React.FunctionComponent<LoadingProps> = ({ status }) => {
  * Wait component for the application on TailwindCSS.
  */
 export const Wait: React.FunctionComponent<LoadingProps> = React.memo(
-  ({ children, centered = true, status }) => {
+  ({ children, centered, status }) => {
     return (
       <>
         {status ? (
@@ -39,7 +39,7 @@ export const Wait: React.FunctionComponent<LoadingProps> = React.memo(
               centered && "flex justify-center items-center m-1"
             )}
           >
-            <StageSpinner loading={status} color={Color.secondary} size={80} />
+            <StageSpinner loading={status} color="#65BFB1" size={80} />
           </div>
         ) : (
           children
@@ -48,3 +48,7 @@ export const Wait: React.FunctionComponent<LoadingProps> = React.memo(
     );
   }
 );
+
+Wait.defaultProps = {
+  centered: true,
+}
