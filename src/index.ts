@@ -1,7 +1,7 @@
 import './index.css';
 
 export { Box } from "./components/Box";
-export type { BoxProps } from "./components/Box";
+export type { BoxProps } from "./components/Box/types";
 
 export { Row } from "./components/Row";
 export type { RowProps } from "./components/Row";
@@ -221,7 +221,11 @@ export { sort } from "./utils/sort";
 export { stack } from "./utils/stack";
 export { bearer } from "./utils/bearer";
 export { revert } from "./utils/revert";
-export { mapping } from "./utils/mapping";
+export {
+  mapping,
+  type Mapping,
+  type Option as IOptionMapping,
+} from "./utils/mapping";
 export { isAmount } from "./utils/amount";
 export { download } from "./utils/download";
 export { capitalize } from "./utils/capitalize";
@@ -232,7 +236,10 @@ export * as Detail from "./components/Detail";
 export type { DetailProps, SectionProps } from "./components/Detail";
 
 export { Timeline } from "./components/Timeline";
-export type { TimelineProps, TimelineDashedProps } from "./components/Timeline/types";
+export type {
+  TimelineProps,
+  TimelineDashedProps,
+} from "./components/Timeline/types";
 
 export { Dragarea } from "./components/Dragarea";
 export type { DragareaProps } from "./components/Dragarea/types";

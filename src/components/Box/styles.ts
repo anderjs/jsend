@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { BoxProps } from "./index";
+import { BoxProps } from "./types";
 
 type ContainerArgs = Partial<BoxProps>;
 

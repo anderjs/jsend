@@ -1,23 +1,22 @@
 import React from "react";
 import { classes } from "./styles";
 
-export const Flex: React.FC<FlexProps> = ({ children, display = true }) => {
+export const Flex: React.FC<FlexProps> = ({ children, display = true, ...props }) => {
+
   /**
    * @description
    * Lightweight builder.
    */
-  const tailwind = React.useMemo(() => classes.parent({ display }), [display]);
+  const tailwind = classes.parent({ display, ...props });
 
   return <div className={tailwind}>{children}</div>;
 };
 
-export const FlexItem: React.FC<FlexItemProps> = (props) => {
-  const tailwind = React.useMemo(() => classes.child(props), [props]);
+export const FlexItem: React.FC<FlexItemProps> = ({ children, ...props }) => {
+  const tailwind = classes.child(props);
 
-  return <div className={tailwind}>{props.children}</div>;
+  return <div className={tailwind}>{children}</div>;
 };
-
-
 
 export type FlexProps = {
   gap?: number;
@@ -39,6 +38,21 @@ export type FlexItemProps = {
   self?: "start" | "center" | "end" | "stretch" | "baseline" | "auto";
   basis?: number | string;
   justifySelf?: "auto" | "start" | "end" | "center" | "stretch";
-  order?: "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "10" | "11" | "12" | "first" | "last" | "none";
+  order?:
+    | "1"
+    | "2"
+    | "3"
+    | "4"
+    | "5"
+    | "6"
+    | "7"
+    | "8"
+    | "9"
+    | "10"
+    | "11"
+    | "12"
+    | "first"
+    | "last"
+    | "none";
   className?: string;
-}
+};

@@ -1,16 +1,12 @@
-import tailwindcss from "tailwindcss";
-import autoprefixer from "autoprefixer";
 import defaultTheme from "tailwindcss/defaultTheme";
 
 /** @type {import('tailwindcss').Config} */
 export default {
-  darkMode: false,
   content: [
-    "src/**/*.{jsx,tsx}",
-    "**/*.{jsx,tsx,ts,js}",
-    "src/components/**/*.{jsx,tsx}",
-    "**/*.{tw,tailwind}.{jsx,tsx,ts,js}",
-    "**/*.composition?(s).{jsx,tsx,ts,js}",
+    "./public/**/*.html",
+    "./src/**/*.{js,jsx,ts,tsx}",
+    "./dist/**/*.{js,ts,jsx,tsx}",
+
   ],
   theme: {
     extend: {
@@ -86,6 +82,6 @@ export default {
       250: "250ms",
     },
   },
-  plugins: [tailwindcss, autoprefixer],
+  plugins: [],
 }
 

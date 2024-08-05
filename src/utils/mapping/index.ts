@@ -1,13 +1,13 @@
 import { map } from "lodash";
 
-type Mapping<T> = {
+export type Mapping<T> = {
   idAsKey: keyof T;
   labelAsKey: keyof T;
   valueAsKey: keyof T;
   valueAsHref?: keyof T;
 };
 
-type Option = {
+export type Option = {
   to?: string;
   key: string;
   label: string;

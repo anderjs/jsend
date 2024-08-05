@@ -15,14 +15,15 @@ export default defineConfig({
     sourcemap: true,
     emptyOutDir: true,
     rollupOptions: {
-      external: ["react", "react-dom", "@heroicons/react"],
+      external: ["react", "react-dom", "react/jsx-runtime", "tailwindcss"],
       output: {
         globals: {
           react: "react",
           "react-dom": "ReactDOM",
         },
+
       },
     },
   },
-  plugins: [react(), dts(), paths()],
+  plugins: [react(), dts({ insertTypesEntry: true }), paths()],
 });
