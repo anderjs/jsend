@@ -1,16 +1,320 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,700;1,100;1,300;1,400;1,500&display=swap');
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,700;1,100;1,300;1,400;1,500&display=swap");
 
 :root {
   --color-info: #939799;
+  --color-muted: #bababa;
   --color-danger: #e55257;
   --color-warning: #f1a946;
+  --color-quinary: #f5c37e;
   --color-primary: #316772;
   --color-darkened: #464646;
   --color-disabled: #f3f3f3;
   --color-secondary: #65bfb1;
   --color-background: #f3f3f3;
+  --color-opaque: #dfdfdf;
+}
+
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+body {
+  color: var(--color-darkened);
+  background-color: var(--color-background);
+  font-family: "Roboto", sans-serif;
+}
+
+.text-info {
+  color: var(--color-info);
+}
+
+.text-danger {
+  color: var(--color-danger);
+}
+
+.text-warning {
+  color: var(--color-warning);
+}
+
+.text-secondary {
+  color: var(--color-secondary);
+}
+
+.peer-checked.bg-primary {
+  background-color: var(--color-primary);
+}
+
+.text-disabled {
+  color: var(--color-disabled);
+}
+
+.text-muted {
+  color: var(--color-muted);
+}
+
+.text-darkened {
+  color: var(--color-darkened);
+}
+
+.text-opaque {
+  color: var(--color-opaque);
+}
+
+.bg-info {
+  background-color: var(--color-info);
+}
+
+.bg-danger {
+  background-color: var(--color-danger);
+}
+
+.bg-warning {
+  background-color: var(--color-warning);
+}
+
+.bg-primary {
+  background-color: var(--color-primary);
+}
+
+.bg-secondary {
+  background-color: var(--color-secondary);
+  color: var(--color-disabled);
+}
+.bg-secondary:hover {
+  transition: background-color 0.5s ease;
+  background-color: var(--color-primary);
+  color: var(--color-disabled);
+}
+
+.bg-secondary.bg-opaque:hover {
+  background-color: var(--color-opaque);
+}
+
+.bg-senary.disabled,
+.bg-senary.disabled:hover {
+  background-color: var(--color-app);
+  border: 1px solid var(--color-muted);
+  color: var(--color-muted);
+}
+
+.bg-quaternary:hover {
+  transition: background-color 0.5s ease;
+  background-color: var(--color-primary);
+  color: var(--color-disabled);
+}
+
+.bg-quinary {
+  background-color: var(--color-quinary);
+  --tw-ring-color: var(--color-quinary);
+}
+
+.bg-quinary.hidden {
+  background-color: var(--color-muted);
+  --tw-ring-color: var(--color-muted);
+}
+
+.ring-quinary {
+  --tw-ring-color: var(--color-quinary);
+}
+
+.bg-muted button {
+  background-color: var(--color-muted);
+  --tw-ring-color: var(--color-muted);
+}
+
+.bg-muted button:hover {
+  background-color: var(--color-quinary);
+  --tw-ring-color: var(--color-quinary);
+}
+
+.bg-senary {
+  background-color: #ffffff;
+}
+
+.bg-senary:hover {
+  transition: background-color 0.5s ease;
+  background-color: var(--color-secondary);
+  color: var(--color-disabled);
+}
+
+.bg-secondary.disabled.controllers {
+  background-color: var(--color-muted);
+  opacity: 0.5;
+}
+
+.bg-gray {
+  background-color: var(--color-muted);
+}
+
+.bg-opaque {
+  background-color: var(--color-opaque);
+}
+
+.disabled\:bg-opaque:disabled {
+  background-color: var(--color-opaque);
+}
+
+.react-datepicker-popper div {
+  z-index: 10;
+}
+
+.bg-secondary.bg-inactive {
+  background-color: var(--color-muted);
+}
+
+.border-info {
+  border-color: var(--color-info);
+}
+
+.border-danger {
+  border-color: var(--color-danger);
+}
+
+.border-warning {
+  border-color: var(--color-warning);
+}
+
+.border-primary {
+  border-color: var(--color-primary);
+}
+
+.border-secondary {
+  border-color: var(--color-secondary);
+}
+
+.border-disabled {
+  border-color: var(--color-disabled);
+}
+
+.border-opaque {
+  border-color: var(--color-opaque);
+}
+
+.ring-opaque {
+  --tw-ring-color: var(--color-opaque);
+}
+
+.ring-secondary {
+  --tw-ring-color: var(--color-secondary);
+}
+
+.mx-16 {
+  margin-left: 4rem !important;
+  margin-right: 4rem !important;
+}
+
+.swal2-container {
+  z-index: 9999999;
+}
+
+button.text-primary.bg-white {
+  background: white;
+}
+
+button.hover\:bg-danger:hover {
+  background-color: var(--color-danger);
+}
+
+svg.hover\:text-primary:hover {
+  color: var(--color-primary);
+}
+
+svg.text-info {
+  color: var(--color-secondary);
+}
+
+.ring-bg-quinary {
+  background-color: var(--color-quinary);
+}
+
+.ring-bg-quinary:hover {
+  background-color: var(--color-quinary);
+}
+
+.react-datepicker-popper[data-placement^="top-start"] {
+  z-index: 10;
+}
+
+[about="controls"] {
+  background-color: #fff;
+}
+
+[about="details"] {
+  color: #fff;
+}
+
+[about="controls"]:hover {
+  background-color: var(--color-primary);
+}
+
+[about="page"]:hover {
+  background-color: var(--color-secondary);
+}
+
+[about="graphics"] {
+  background-color: #ffffff;
+}
+
+[about="graphics"]:hover {
+  background-color: var(--color-secondary);
+  color: #fff;
+}
+
+.icon {
+  background-color: #ffff;
+}
+
+.icon .swal2-icon {
+  color: #fde68a;
+}
+
+.react-datepicker__day--disabled {
+  color: #ccc !important;
+}
+
+#react-select-2-placeholder {
+  font-size: 1rem;
+}
+
+#react-select-3-placeholder {
+  font-size: 1rem;
+}
+
+#react-select-4-placeholder {
+  font-size: 1rem;
+}
+
+.customScroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-secondary) #f1f1f1;
+}
+
+.customScroll::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+.customScroll::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 1.25rem;
+}
+
+.customScroll::-webkit-scrollbar-thumb {
+  background: var(--color-secondary);
+  border-radius: 1.25rem;
+}
+
+.customScroll::-webkit-scrollbar-thumb:hover {
+  background: var(--color-secondary);
+}
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  /* Styles for legacy Edge */
+  .customScroll {
+    scrollbar-face-color: var(--color-secondary);
+    scrollbar-track-color: #f1f1f1;
+    scrollbar-arrow-color: var(--color-secondary);
+  }
 }

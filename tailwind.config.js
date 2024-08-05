@@ -1,3 +1,5 @@
+import TailwindCss from "tailwindcss";
+import Autoprefixer from "autoprefixer";
 import defaultTheme from "tailwindcss/defaultTheme";
 
 /** @type {import('tailwindcss').Config} */
@@ -82,6 +84,6 @@ export default {
       250: "250ms",
     },
   },
-  plugins: [],
+  plugins: [TailwindCss, Autoprefixer],
 }
 
