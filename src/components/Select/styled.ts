@@ -1,10 +1,12 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Select from "react-select";
 import { SelectProps } from ".";
 
 import styled from "styled-components";
 
 
-type PartialProps = Partial<Omit<SelectProps, "children" | "handleKeyDown" | "placeholder">>;
+type PartialProps = Partial<Omit<SelectProps, "children" | "placeholder">>;
+
 
 function getColor(
   variant: SelectProps["variant"],
@@ -303,7 +305,7 @@ function getBorderOptionRadius(variant: SelectProps["variant"]) {
   }
 }
 
-export const StyledSelect = styled(Select)<PartialProps>`
+export const StyledSelect: any = styled(Select)<PartialProps>`
   .react-select__control {
     border-radius: ${({ variant }) => variant && getBorderRadius(variant)};
     border-color: ${({ variant, disabled }) =>

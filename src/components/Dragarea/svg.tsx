@@ -1,5 +1,4 @@
 import React from "react";
-import { JSX } from "react/jsx-runtime";
 
 // CloudArrowUpIcon is already a functional component using React.FC
 export const CloudArrowUpIcon: React.FC<JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>> = (props) => {

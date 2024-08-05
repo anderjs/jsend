@@ -1,8 +1,10 @@
-import Select from "react-select";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import Select, { Props } from "react-select";
 import styled, { css } from "styled-components";
 
 import { Color } from "@nectiasw/theme";
 import { Dropdown } from "@nectiasw/components/Dropdown";
+import React from "react";
 
 type ExtendedSearch = {
   dropdown?: boolean;
@@ -12,7 +14,7 @@ const noDropdownStyle = css`
   margin-left: 1.25rem;
 `
 
-export const StyledSelect = styled(Select)<ExtendedSearch>`
+export const StyledSelect: React.ComponentType<Props & ExtendedSearch> = styled(Select)<ExtendedSearch>`
   .react-select__control {
     border: 1px solid #dfdfdf;
     color: #464646;

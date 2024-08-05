@@ -15,7 +15,7 @@ export default defineConfig({
     sourcemap: true,
     emptyOutDir: true,
     rollupOptions: {
-      external: ["react", "react-dom"],
+      external: ["react", "react-dom", "@heroicons/react"],
       output: {
         globals: {
           react: "react",
