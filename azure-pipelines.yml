@@ -2,7 +2,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-  npm_auth_token: 'emJmZWFmdDVxaWRxYWt3cGZxNTVqZDduejI1ZzJkbXF4ZGJsdGxhdDczcnZhNHBidnV4YQ=='
+  - group: Common
 
 steps:
 - task: NodeTool@0
