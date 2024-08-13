@@ -21,11 +21,11 @@ steps:
     echo "always-auth=true" >> .npmrc
   displayName: 'Set up .npmrc'
 
-- script: npm install
-  displayName: 'Install dependencies'
+#- script: npm install
+#  displayName: 'Install dependencies'
 
-- script: npm run release
-  displayName: 'Run release script'
+#- script: npm run release
+#  displayName: 'Run release script'
 
 - script: npm publish --scope=@tuscope
   displayName: 'Publish to Azure Artifacts'
