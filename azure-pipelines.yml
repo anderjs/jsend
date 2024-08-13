@@ -21,7 +21,7 @@ steps:
     echo "always-auth=true" >> .npmrc
   displayName: 'Set up .npmrc'
 
-- script: npm install --legacy-peer-deps
+- script: npm install --save-dev standard-version
   displayName: 'Install dependencies'
 
 - script: npm publish --scope=@tuscope
