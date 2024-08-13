@@ -1,0 +1,25 @@
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  npm_auth_token: 'emJmZWFmdDVxaWRxYWt3cGZxNTVqZDduejI1ZzJkbXF4ZGJsdGxhdDczcnZhNHBidnV4YQ'
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '14.x'
+  displayName: 'Install Node.js'
+
+- script: |
+    echo "registry=https://pkgs.dev.azure.com/desarrollooticoptimus/optimus/_packaging/FrontComponent/npm/registry/" > .npmrc
+    echo "//pkgs.dev.azure.com/desarrollooticoptimus/optimus/_packaging/FrontComponent/npm/registry/:username=desarrollooticoptimus" >> .npmrc
+    echo "//pkgs.dev.azure.com/desarrollooticoptimus/optimus/_packaging/FrontComponent/npm/registry/:_password=emJmZWFmdDVxaWRxYWt3cGZxNTVqZDduejI1ZzJkbXF4ZGJsdGxhdDczcnZhNHBidnV4YQ==" >> .npmrc
+    echo "//pkgs.dev.azure.com/desarrollooticoptimus/optimus/_packaging/FrontComponent/npm/registry/:email=desarrollo_otic@ccc.cl" >> .npmrc
+    echo "//pkgs.dev.azure.com/desarrollooticoptimus/optimus/_packaging/FrontComponent/npm/:username=desarrollooticoptimus" >> .npmrc
+    echo "//pkgs.dev.azure.com/desarrollooticoptimus/optimus/_packaging/FrontComponent/npm/:_password=emJmZWFmdDVxaWRxYWt3cGZxNTVqZDduejI1ZzJkbXF4ZGJsdGxhdDczcnZhNHBidnV4YQ==" >> .npmrc
+    echo "//pkgs.dev.azure.com/desarrollooticoptimus/optimus/_packaging/FrontComponent/npm/:email=desarrollo_otic@ccc.cl" >> .npmrc
+    echo "always-auth=true" >> .npmrc
+  displayName: 'Set up .npmrc'
+
+- script: npm publish --scope=@tuscope
+  displayName: 'Publish to Azure Artifacts'
