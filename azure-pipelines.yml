@@ -11,11 +11,13 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
-    echo "registry=https://registry.npmjs.org/" > .npmrc
-    echo "@tuscope:registry=https://pkgs.dev.azure.com/desarrollooticoptimus/optimus/_packaging/FrontComponent/npm/registry/" >> .npmrc
-    echo "//pkgs.dev.azure.com/desarrollooticoptimus/_packaging/FrontComponent/npm/registry/:username=desarrollo_otic@ccc.cl" >> .npmrc
-    echo "//pkgs.dev.azure.com/desarrollooticoptimus/_packaging/FrontComponent/npm/registry/:_password=$(npm_auth_token)" >> .npmrc
-    echo "//pkgs.dev.azure.com/desarrollooticoptimus/_packaging/FrontComponent/npm/registry/:email=desarrollo_otic@ccc.cl" >> .npmrc
+    echo "registry=https://pkgs.dev.azure.com/desarrollooticoptimus/optimus/_packaging/FrontComponent/npm/registry/" > .npmrc
+    echo "//pkgs.dev.azure.com/desarrollooticoptimus/optimus/_packaging/FrontComponent/npm/registry/:username=desarrollooticoptimus" >> .npmrc
+    echo "//pkgs.dev.azure.com/desarrollooticoptimus/optimus/_packaging/FrontComponent/npm/registry/:_password=emJmZWFmdDVxaWRxYWt3cGZxNTVqZDduejI1ZzJkbXF4ZGJsdGxhdDczcnZhNHBidnV4YQ==" >> .npmrc
+    echo "//pkgs.dev.azure.com/desarrollooticoptimus/optimus/_packaging/FrontComponent/npm/registry/:email=desarrollo_otic@ccc.cl" >> .npmrc
+    echo "//pkgs.dev.azure.com/desarrollooticoptimus/optimus/_packaging/FrontComponent/npm/:username=desarrollooticoptimus" >> .npmrc
+    echo "//pkgs.dev.azure.com/desarrollooticoptimus/optimus/_packaging/FrontComponent/npm/:_password=emJmZWFmdDVxaWRxYWt3cGZxNTVqZDduejI1ZzJkbXF4ZGJsdGxhdDczcnZhNHBidnV4YQ==" >> .npmrc
+    echo "//pkgs.dev.azure.com/desarrollooticoptimus/optimus/_packaging/FrontComponent/npm/:email=desarrollo_otic@ccc.cl" >> .npmrc
     echo "always-auth=true" >> .npmrc
   displayName: 'Set up .npmrc'
 
