@@ -21,5 +21,5 @@ steps:
     echo "always-auth=true" >> .npmrc
   displayName: 'Set up .npmrc'
 
-- script: npm publish --scope=@nectiasw
+- script: npm publish --scope=@@tuscope
   displayName: 'Publish to Azure Artifacts'
