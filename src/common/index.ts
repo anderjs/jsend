@@ -44,5 +44,10 @@ export interface HostSolidOptions extends HostOptions {
   loadSolidApp: () => Promise<() => React.JSX.Element>;
 }
 
+export interface HostVanillaOptions {
+  id: string;
+  component: Element;
+}
+
 
 export const getId = (id: string) => `#${id}`;
