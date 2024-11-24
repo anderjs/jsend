@@ -6,7 +6,7 @@ export type AngularApp = {
   destroy: () => void;
 };
 
-export function createNgRoot({
+export function createAngularRoot({
   id,
   loadNgApp,
 }: HostNgOptions): CustomElementConstructor {

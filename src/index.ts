@@ -1,3 +1,11 @@
-export { createNgRoot, type AngularApp } from "./@angular";
-export { createReactRoot, type ReactApp } from "./@react";
-export type { HostOptions, HostNgOptions, HostReactOptions } from "./common";
+export { createVueRoot } from "./@vue";
+export { createReactRoot } from "./@react";
+export { createSvelteRoot } from "./@svelte";
+export { createAngularRoot } from "./@angular";
+export type {
+  HostOptions,
+  HostNgOptions,
+  HostVueOptions,
+  HostReactOptions,
+  HostSvelteOptions,
+} from "./common";

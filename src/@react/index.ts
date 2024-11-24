@@ -1,5 +1,5 @@
 import { html, LitElement } from "lit";
-import { HostReactOptions } from "@nectiasw/common";
+import { getId, HostReactOptions } from "@nectiasw/common";
 
 export type ReactApp = ReturnType<typeof import("react-dom/client").createRoot>;
 
@@ -13,16 +13,16 @@ export function createReactRoot({
   loadReactApp,
 }: HostReactOptions): CustomElementConstructor {
   return class App extends LitElement {
-    private mount: boolean = true;
+    private app: ReactApp | null = null;
 
-    private runtime: ReactApp | null = null;
+    private mount: boolean = true;
 
     public createRenderRoot() {
       return this;
     }
 
     async updated(): Promise<void> {
-      const container = this.renderRoot.querySelector(`#${id}`);
+      const container = this.renderRoot.querySelector(getId(id));
 
       if (container && this.mount) {
         try {
@@ -38,7 +38,7 @@ export function createReactRoot({
 
           this.mount = false;
 
-          this.runtime = root;
+          this.app = root;
         } catch (e) {
           console.error("Error al cargar React app:", e);
         }
@@ -48,8 +48,8 @@ export function createReactRoot({
     public disconnectedCallback(): void {
       super.disconnectedCallback();
 
-      if (this.runtime) {
-        this.runtime.unmount();
+      if (this.app) {
+        this.app.unmount();
       }
     }
 
