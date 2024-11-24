@@ -30,4 +30,9 @@ export interface HostSvelteOptions extends HostOptions {
   }>;
 }
 
+export interface HostSolidOptions extends HostOptions {
+  id: string;
+  loadSolidApp: () => Promise<() => React.JSX.Element>;
+}
+
 export const getId = (id: string) => `#${id}`;
