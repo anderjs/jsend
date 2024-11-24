@@ -1,5 +1,5 @@
 import { html, LitElement } from "lit";
-import { HostNgOptions } from "@nectiasw/common";
+import { getId, HostNgOptions } from "@nectiasw/common";
 import { platformBrowserDynamic } from "@angular/platform-browser-dynamic";
 
 export type AngularApp = {
@@ -18,7 +18,7 @@ export function createAngularRoot({
     }
 
     async firstUpdated(): Promise<void> {
-      const container = this.renderRoot.querySelector(`#${id}`);
+      const container = this.renderRoot.querySelector(getId(id));
 
       if (container && !this.runtime) {
         try {
