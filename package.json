@@ -34,6 +34,7 @@
     "@angular/core": "^19.0.0",
     "@angular/platform-browser": "^19.0.0",
     "@angular/platform-browser-dynamic": "^19.0.0",
+    "@builder.io/qwik": "^1.10.0",
     "@vue/runtime-dom": "^3.5.13",
     "autoprefixer": "^10.4.20",
     "babel-preset-solid": "^1.9.3",

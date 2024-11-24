@@ -1,4 +1,5 @@
 export { createVueRoot } from "./@vue";
+export { createQwikRoot } from "@qwik";
 export { createReactRoot } from "./@react";
 export { createSolidRoot } from "./@solid";
 export { createSvelteRoot } from "./@svelte";
