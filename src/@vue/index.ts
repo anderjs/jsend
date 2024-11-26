@@ -10,7 +10,7 @@ export function createVueRoot({
     private app: Vue | null = null;
 
     public createRenderRoot() {
-      return this;  
+      return this;
     }
 
     async firstUpdated(): Promise<void> {
@@ -18,9 +18,9 @@ export function createVueRoot({
 
       if (container && !this.app) {
         try {
-          const { default: VueApp } = await loadVueApp();
+          const app = await loadVueApp();
 
-          this.app = createApp(VueApp);
+          this.app = createApp(app);
 
           this.app.mount(container);
         } catch (e) {
@@ -43,4 +43,36 @@ export function createVueRoot({
       return html`<div id=${id}></div>`;
     }
   };
+}
+
+/**
+ * @description
+ * Legacy API for Vanilla JS.
+ */
+export async function mountVueRoot({ id, loadVueApp }: HostVueOptions) {
+  const container = document.getElementById(id);
+
+  if (container) {
+    try {
+      const component = await loadVueApp();
+
+      const app = createApp(component);
+
+      app.mount(container);
+    } catch (e) {
+      console.error("Error al montar la app Vue:", e);
+    }
+  }
+}
+
+/**
+ * @description
+ * Legacy API for Vanilla JS.
+ */
+export async function unmountVueRoot({ id }: Pick<HostVueOptions, "id">) {
+  const container = document.getElementById(id);
+
+  if (container) {
+    container.innerHTML = "";
+  }
 }

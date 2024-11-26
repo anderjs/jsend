@@ -2,7 +2,7 @@ import type { App } from "vue";
 import type { Type } from "@angular/core";
 import type { SvelteComponent } from "svelte";
 import type { JSXOutput } from "@builder.io/qwik";
-
+import type { ComponentType } from "react";
 
 export interface HostOptions {
   id: string;
@@ -16,27 +16,22 @@ export interface HostQwikOptions {
   }>;
 }
 
-
 export interface HostVueOptions extends HostOptions {
   id: string;
-  loadVueApp: () => Promise<{ default: App }>;
+  loadVueApp: () => Promise<App>;
 }
 
 export interface HostReactOptions extends HostOptions {
-  loadReactApp: () => Promise<React.ComponentType<never>>;
+  loadReactApp: () => Promise<ComponentType<never>>;
 }
 
 export interface HostNgOptions extends HostOptions {
-  loadNgApp: () => Promise<{
-    AppModule: Type<never>;
-  }>;
+  loadNgApp: () => Promise<Type<never>>;
 }
 
 export interface HostSvelteOptions extends HostOptions {
   id: string;
-  loadSvelteApp: () => Promise<{
-    default: typeof SvelteComponent;
-  }>;
+  loadSvelteApp: () => Promise<SvelteComponent>;
 }
 
 export interface HostSolidOptions extends HostOptions {
@@ -48,6 +43,5 @@ export interface HostVanillaOptions {
   id: string;
   component: Element;
 }
-
 
 export const getId = (id: string) => `#${id}`;

@@ -1,4 +1,4 @@
-export { createVueRoot } from "./@vue";
+export { createVueRoot, mountVueRoot, unmountVueRoot } from "./@vue";
 export { createQwikRoot } from "./@qwik";
 export { createReactRoot } from "./@react";
 export { createSolidRoot } from "./@solid";
